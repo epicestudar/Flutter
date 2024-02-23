@@ -1,12 +1,11 @@
+// Classe que representa a tela principal da lista de tarefas
+import 'package:app_lista1/TarefasController.dart';
 import 'package:flutter/material.dart';
-import 'package:app_lista1/TarefaController.dart';
-import 'package:app_lista1/tarefaModel.dart';
 import 'package:provider/provider.dart';
 
 class ListaTarefasScreen extends StatelessWidget {
   // Controlador para o campo de texto de nova tarefa
   final TextEditingController _controller = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +48,10 @@ class ListaTarefasScreen extends StatelessWidget {
                     return ListTile(
                       // Exibição do texto da tarefa
                       title: Text(model.tarefas[index].descricao),
+                      // Exibição da data e hora da tarefa
+                      subtitle: Text(
+                        '${model.tarefas[index].dataHora.day}/${model.tarefas[index].dataHora.month}/${model.tarefas[index].dataHora.year} ${model.tarefas[index].dataHora.hour}:${model.tarefas[index].dataHora.minute}',
+                      ),
                       // Checkbox para marcar a tarefa como concluída
                       trailing: Checkbox(
                         value: model.tarefas[index].concluida,
