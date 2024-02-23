@@ -66,4 +66,12 @@ void adicionarCompra(String descricao) {
       notifyListeners();
     }
   }
+
+// Método para ordenar a lista de compras por ordem alfabética
+  void ordenarComprasPorOrdemAlfabetica() {
+    _compras.sort((a, b) => a.descricao.toLowerCase().compareTo(b.descricao.toLowerCase()));
+    notifyListeners();
+  }
+
+
 }
