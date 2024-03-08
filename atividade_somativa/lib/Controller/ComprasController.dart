@@ -73,5 +73,12 @@ void adicionarCompra(String descricao) {
     notifyListeners();
   }
 
+void editarCompra(int indice, String novaDescricao) {
+  if (indice >= 0 && indice < _compras.length) {
+    _compras[indice].descricao = novaDescricao.trim();
+    notifyListeners();
+  }
+}
+
 
 }
