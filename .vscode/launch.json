@@ -1,0 +1,448 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "app_animais",
+            "cwd": "app_animais",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "app_animais (profile mode)",
+            "cwd": "app_animais",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "app_animais (release mode)",
+            "cwd": "app_animais",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "app_lista1",
+            "cwd": "app_lista1",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "app_lista1 (profile mode)",
+            "cwd": "app_lista1",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "app_lista1 (release mode)",
+            "cwd": "app_lista1",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "atividade_somativa",
+            "cwd": "atividade_somativa",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "atividade_somativa (profile mode)",
+            "cwd": "atividade_somativa",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "atividade_somativa (release mode)",
+            "cwd": "atividade_somativa",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "calculadora",
+            "cwd": "calculadora",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "calculadora (profile mode)",
+            "cwd": "calculadora",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "calculadora (release mode)",
+            "cwd": "calculadora",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "calculadora2",
+            "cwd": "calculadora2",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "calculadora2 (profile mode)",
+            "cwd": "calculadora2",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "calculadora2 (release mode)",
+            "cwd": "calculadora2",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo_interface",
+            "cwd": "exemplo_interface",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo_interface (profile mode)",
+            "cwd": "exemplo_interface",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo_interface (release mode)",
+            "cwd": "exemplo_interface",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo_mediaquery",
+            "cwd": "exemplo_mediaquery",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo_mediaquery (profile mode)",
+            "cwd": "exemplo_mediaquery",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo_mediaquery (release mode)",
+            "cwd": "exemplo_mediaquery",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo_persistencia",
+            "cwd": "exemplo_persistencia",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo_persistencia (profile mode)",
+            "cwd": "exemplo_persistencia",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo_persistencia (release mode)",
+            "cwd": "exemplo_persistencia",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicios_basicos",
+            "cwd": "exercicios_basicos",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicios_basicos (profile mode)",
+            "cwd": "exercicios_basicos",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicios_basicos (release mode)",
+            "cwd": "exercicios_basicos",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "hello_world",
+            "cwd": "hello_world",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "hello_world (profile mode)",
+            "cwd": "hello_world",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "hello_world (release mode)",
+            "cwd": "hello_world",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "jogo_adivinhacao",
+            "cwd": "jogo_adivinhacao",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "jogo_adivinhacao (profile mode)",
+            "cwd": "jogo_adivinhacao",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "jogo_adivinhacao (release mode)",
+            "cwd": "jogo_adivinhacao",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "variaveis",
+            "cwd": "variaveis",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "variaveis (profile mode)",
+            "cwd": "variaveis",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "variaveis (release mode)",
+            "cwd": "variaveis",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio11",
+            "cwd": "exercicios_avancados\\exercicio11",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio11 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio11",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio11 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio11",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio12",
+            "cwd": "exercicios_avancados\\exercicio12",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio12 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio12",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio12 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio12",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio13",
+            "cwd": "exercicios_avancados\\exercicio13",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio13 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio13",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio13 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio13",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio14",
+            "cwd": "exercicios_avancados\\exercicio14",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio14 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio14",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio14 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio14",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio15",
+            "cwd": "exercicios_avancados\\exercicio15",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio15 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio15",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio15 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio15",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio16",
+            "cwd": "exercicios_avancados\\exercicio16",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio16 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio16",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio16 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio16",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio17",
+            "cwd": "exercicios_avancados\\exercicio17",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio17 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio17",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio17 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio17",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio18",
+            "cwd": "exercicios_avancados\\exercicio18",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio18 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio18",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio18 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio18",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio19",
+            "cwd": "exercicios_avancados\\exercicio19",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio19 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio19",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio19 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio19",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio20",
+            "cwd": "exercicios_avancados\\exercicio20",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio20 (profile mode)",
+            "cwd": "exercicios_avancados\\exercicio20",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio20 (release mode)",
+            "cwd": "exercicios_avancados\\exercicio20",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

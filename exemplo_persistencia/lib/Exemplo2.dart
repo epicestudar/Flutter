@@ -1,38 +1,39 @@
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:flutter/material.dart'; // Importação da biblioteca Flutter Material
+import 'package:shared_preferences/shared_preferences.dart'; // Importação da biblioteca de preferências compartilhadas
+ 
 void main() {
-  runApp(MyApp());
+  runApp(MyApp()); // Execução do aplicativo Flutter
 }
-
+ 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Lista com Shared Preferences',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: TaskList());
+      title: 'Lista de Tarefas', // Título do aplicativo
+      theme: ThemeData(
+        primarySwatch: Colors.blue, // Tema do aplicativo
+      ),
+      home: TaskListScreen(), // Tela inicial do aplicativo
+    );
   }
 }
-
-class TaskList extends StatefulWidget {
+ 
+class TaskListScreen extends StatefulWidget {
   @override
-  _TaskListState createState() => _TaskListState();
+  _TaskListScreenState createState() => _TaskListScreenState();
 }
-
-class _TaskListState extends State<TaskList>{
- List<String> tasks = []; // Lista de tarefas
+ 
+class _TaskListScreenState extends State<TaskListScreen> {
+  List<String> tasks = []; // Lista de tarefas
   final TextEditingController _controller =
       TextEditingController(); // Controlador de texto para o campo de entrada de nova tarefa
-
-
+ 
   @override
   void initState() {
     super.initState();
     loadTasks(); // Carrega as tarefas ao iniciar a tela
   }
-
-
+ 
   Future<void> loadTasks() async {
     SharedPreferences prefs = await SharedPreferences
         .getInstance(); // Obtém as preferências compartilhadas
@@ -41,16 +42,14 @@ class _TaskListState extends State<TaskList>{
           []; // Carrega as tarefas armazenadas ou uma lista vazia se não houver tarefas
     });
   }
-
-
+ 
   Future<void> saveTasks() async {
     SharedPreferences prefs = await SharedPreferences
         .getInstance(); // Obtém as preferências compartilhadas
     await prefs.setStringList('tasks',
         tasks); // Salva a lista de tarefas nas preferências compartilhadas
   }
-
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,5 +105,4 @@ class _TaskListState extends State<TaskList>{
       ),
     );
   }
-  
 }
