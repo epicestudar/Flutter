@@ -1,0 +1,7 @@
+tela inicial - login - insrir nome de usuario/email e senha - botao entrar e botao cadastrar
+
+SE ela não tiver login, criar página com formulário de cadastro e preferências do usuário
+
+dps do cadastro ser feito e ele conseguir efetuar o login, abrirá uma outra página simples com as preferências do usuário (idioma, modo escuro ou claro e tamanho da fonte)
+
+as preferencias do usuário podem ser cadastradas já no formulário OU ser padrão no primeiro acesso dele e dps ele muda conforme as suas preferências
