@@ -1,7 +1,8 @@
+// Classe responsável por exibir a página inicial do aplicativo
 import 'package:exemplo_sqlite/db_controller.dart';
-import 'package:exemplo_sqlite/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'Model.dart';
 
 class HomePage extends StatefulWidget {
   @override

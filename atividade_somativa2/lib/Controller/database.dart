@@ -1,16 +1,15 @@
+import 'package:atividade_somativa2/Model/usuario.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'Model.dart';
-
 class DatabaseHelper {
-  static const String DATABASE_NAME = 'contacts.db'; // Nome do banco de dados
-  static const String TABLE_NAME = 'contacts'; // Nome da tabela
+  static const String DATABASE_NAME = 'usuarios.db'; // Nome do banco de dados
+  static const String TABLE_NAME = 'usuarios'; // Nome da tabela
   static const String
       CREATE_CONTACTS_TABLE_SCRIPT = // Script SQL para criar a tabela
       "CREATE TABLE contacts(id INTEGER PRIMARY KEY," +
-          "name TEXT, email TEXT, phone TEXT," +
-          "addressLine1 TEXT)";
+          "nome TEXT, email TEXT, senha TEXT," +
+          "phone TEXT)";
 
   
   Future<Database> _getDatabase() async {
@@ -25,7 +24,7 @@ class DatabaseHelper {
     );
   }
   // Método para criar um novo contato no banco de dados
-  Future<void> create(ContactModel model) async {
+  Future<void> create(UsuarioModel model) async {
     try {
       final Database db = await _getDatabase();
       await db.insert(
@@ -37,7 +36,7 @@ class DatabaseHelper {
   }
 
   // Método para obter todos os contatos do banco de dados
-  Future<List<ContactModel>> getContacts() async {
+  Future<List<UsuarioModel>> getContacts() async {
     try {
       final Database db = await _getDatabase();
       final List<Map<String, dynamic>> maps =
@@ -46,8 +45,8 @@ class DatabaseHelper {
       return List.generate(
         maps.length,
         (i) {
-          return ContactModel.fromMap(maps[
-              i]); // Converte os resultados da consulta para objetos ContactModel
+          return UsuarioModel.fromMap(maps[
+              i]); // Converte os resultados da consulta para objetos UsuarioModel
         },
       );
     } catch (ex) {
@@ -57,7 +56,7 @@ class DatabaseHelper {
   }
 
   // Método para atualizar um contato no banco de dados
-  Future<void> update(ContactModel model) async {
+  Future<void> update(UsuarioModel model) async {
     try {
       final Database db = await _getDatabase();
       await db.update(

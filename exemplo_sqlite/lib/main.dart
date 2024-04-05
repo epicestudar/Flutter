@@ -1,5 +1,5 @@
-import 'package:exemplo_sqlite/view.dart';
 import 'package:flutter/material.dart';
+import 'View.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Projeto SQLite",
+      title: "Projeto SqlLite",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
