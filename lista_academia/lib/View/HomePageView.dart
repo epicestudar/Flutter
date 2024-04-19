@@ -22,34 +22,37 @@ class _PaginaHomeState extends State<PaginaHome> {
   @override
   void initState() {
     super.initState();
-    _carregarTreinos();
+    _carregarTreinos(email);
   }
 
-  Future<void> _carregarTreinos() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String>? treinosString = prefs.getStringList('$email-treinos');
+  Future<void> _carregarTreinos(String email) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  List<String>? treinosString = prefs.getStringList('$email-treinos');
 
-    if (treinosString != null) {
-      setState(() {
-        treinos = treinosString.map((e) => Treino.fromMap(e)).toList();
-      });
-    } else {
-      // Caso não haja dados salvos, exibir treinos padrão
-      setState(() {
-        treinos = [
-          Treino(nome: "Treino de Segunda", concluido: false),
-          Treino(nome: "Treino de Terça", concluido: false),
-          Treino(nome: "Treino de Quarta", concluido: false),
-          // Adicione quantos treinos desejar
-        ];
-      });
-    }
+  if (treinosString != null) {
+    setState(() {
+      treinos = treinosString.map((e) => Treino.fromMap(e)).toList();
+    });
+  } else {
+    // Caso não haja dados salvos, exibir treinos padrão
+    setState(() {
+      treinos = [
+        Treino(nome: "Treino de Segunda", concluido: false),
+        Treino(nome: "Treino de Terça", concluido: false),
+        Treino(nome: "Treino de Quarta", concluido: false),
+        // Adicione quantos treinos desejar
+      ];
+    });
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: isDarkMode ? ThemeData.dark() : ThemeData.light(), // Aplicando tema escuro
+      theme: isDarkMode
+          ? ThemeData.dark()
+          : ThemeData.light(), // Aplicando tema escuro
       home: Scaffold(
         appBar: AppBar(
           title: Text('Página Inicial'),
