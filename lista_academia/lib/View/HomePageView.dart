@@ -19,11 +19,22 @@ class _PaginaHomeState extends State<PaginaHome> {
 
   List<Treino> treinos = [];
 
-  @override
-  void initState() {
-    super.initState();
-    _carregarTreinos(email);
+ @override
+void initState() {
+  super.initState();
+  _carregarTreinos(email);
+  _carregarPreferenciaTema(); // Carregar tema ao iniciar a página
+}
+
+Future<void> _carregarPreferenciaTema() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool? savedDarkMode = prefs.getBool('isDarkMode');
+  if (savedDarkMode != null) {
+    setState(() {
+      isDarkMode = savedDarkMode; // Definir o estado do tema com base no valor salvo
+    });
   }
+}
 
   Future<void> _carregarTreinos(String email) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -40,7 +51,8 @@ class _PaginaHomeState extends State<PaginaHome> {
         Treino(nome: "Treino de Segunda", concluido: false),
         Treino(nome: "Treino de Terça", concluido: false),
         Treino(nome: "Treino de Quarta", concluido: false),
-        // Adicione quantos treinos desejar
+        Treino(nome: "Treino de Quinta", concluido: false),
+        Treino(nome: "Treino de Sexta", concluido: false),
       ];
     });
   }
