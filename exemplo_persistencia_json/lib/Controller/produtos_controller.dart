@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:exemplo_persistencia_json/Model/produtos_model.dart';
 import 'package:flutter/services.dart';
 
