@@ -29,6 +29,7 @@ class _ProdutosPageState extends State<ProdutosPage> {
                           itemCount: controller.produtos.length,
                           itemBuilder: (context, index) {
                             return ListTile(
+                              leading: Image.asset(controller.produtos[index].foto),
                               title: Text(controller.produtos[index].nome),
                               subtitle:
                                   Text(controller.produtos[index].categoria),

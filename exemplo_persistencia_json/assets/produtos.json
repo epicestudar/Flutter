@@ -2,16 +2,19 @@
     {
         "nome": "CPU",
         "preco": 599.90,
-        "categoria": "informatica"
+        "categoria": "informatica",
+        "foto": "assets/img/img01.jpg"
     },
     {
         "nome": "Camiseta Linux",
         "preco": 49.90,
-        "categoria": "Vestuario"
+        "categoria": "Vestuario",
+        "foto": "assets/img/img02.jpeg"
     },
     {
         "nome": "Mouse Pad",
         "preco": 70.00,
-        "categoria": "Acessorios"
+        "categoria": "Acessorios",
+        "foto": "assets/img/img03.jpg"
     }
 ]
