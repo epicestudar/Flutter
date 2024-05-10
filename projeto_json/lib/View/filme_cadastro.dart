@@ -33,6 +33,39 @@ class _FilmeCadastroScreenState extends State<FilmeCadastroScreen> {
                   }
                 },
               ),
+              TextFormField(
+                decoration: const InputDecoration(hintText: "Genêro do Filme"),
+                controller: _generoController,
+                validator: (value) {
+                  if(value!.trim().isEmpty) {
+                    return "";
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(hintText: "Sinopse do Filme"),
+                controller: _sinopseController,
+                validator: (value) {
+                  if(value!.trim().isEmpty) {
+                    return "";
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(hintText: "Duração do Filme"),
+                controller: _duracaoController,
+                validator: (value) {
+                  if(value!.trim().isEmpty) {
+                    return "";
+                  } else {
+                    return null;
+                  }
+                },
+              ),
               ElevatedButton(onPressed: () => {
                 if(_formKey.currentState!.validate()) {
                   _cadastrarFilme()
