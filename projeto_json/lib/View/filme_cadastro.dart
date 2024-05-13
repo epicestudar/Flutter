@@ -1,124 +1,260 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:projeto_json/Controller/filmes_controller.dart';
+import 'package:projeto_json/Model/filmes.dart';
 
-class FilmeCadastroScreen extends StatefulWidget {
-  const FilmeCadastroScreen({super.key});
+class CadastroScreen extends StatefulWidget {
+  const CadastroScreen({super.key});
 
   @override
-  State<FilmeCadastroScreen> createState() => _FilmeCadastroScreenState();
+  State<CadastroScreen> createState() => _CadastroScreenState();
 }
 
-class _FilmeCadastroScreenState extends State<FilmeCadastroScreen> {
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+class _CadastroScreenState extends State<CadastroScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final FilmeController _controller = FilmeController();
+  List<Filme> _lista = [];
+
   final TextEditingController _nomeController = TextEditingController();
-  final TextEditingController _generoController = TextEditingController();
+  final TextEditingController _categoriaController = TextEditingController();
   final TextEditingController _sinopseController = TextEditingController();
   final TextEditingController _duracaoController = TextEditingController();
   final TextEditingController _anoController = TextEditingController();
-  final TextEditingController _classificacaoController = TextEditingController();
+  final TextEditingController _classificacaoController =
+      TextEditingController();
   final TextEditingController _elencoController = TextEditingController();
+  File? _imageSelecionada;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _controller.loadJson();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cadastro de Filme'),
+        title: Text('Cadastro'),
       ),
       body: Center(
-        child: Form(
-          key: _formkey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-               TextFormField(
-                  decoration: const InputDecoration(hintText: "Nome do Filme"),
-                  controller: _nomeController,
-                  validator: (value) {
-                    if (value!.trim().isEmpty) {
-                      return "Nome do Filme deve ser Preenchido";
-                    } else {
-                      return null;
-                    }
-                  }),
-              TextFormField(
-                  decoration: const InputDecoration(hintText: "Gênero do Filme"),
-                  controller: _generoController,
-                  validator: (value) {
-                    if (value!.trim().isEmpty) {
-                      return "Gênero do Filme deve ser Preenchido";
-                    } else {
-                      return null;
-                    }
-                  }),
-              TextFormField(
-                  decoration: const InputDecoration(hintText: "Sinopse do Filme"),
-                  controller: _sinopseController,
-                  validator: (value) {
-                    if (value!.trim().isEmpty) {
-                      return "Sinopse do Filme deve ser Preenchido";
-                    } else {
-                      return null;
-                    }
-                  }),
-              TextFormField(
-                  decoration: const InputDecoration(hintText: "Duração do Filme"),
-                  controller: _duracaoController,
-                  validator: (value) {
-                    if (value!.trim().isEmpty) {
-                      return "Duração do Filme deve ser Preenchido";
-                    } else {
-                      return null;
-                    }
-                  }),
-              TextFormField(
-                  decoration: const InputDecoration(hintText: "Ano do Filme"),
-                  controller: _anoController,
-                  validator: (value) {
-                    if (value!.trim().isEmpty) {
-                      return "Ano do Filme deve ser Preenchido";
-                    } else {
-                      return null;
-                    }
-                  }),
-              TextFormField(
-                  decoration: const InputDecoration(hintText: "Classificação do Filme"),
-                  controller: _classificacaoController,
-                  validator: (value) {
-                    if (value!.trim().isEmpty) {
-                      return "Classificação do Filme deve ser Preenchido";
-                    } else {
-                      return null;
-                    }
-                  }),
-              TextFormField(
-                  decoration: const InputDecoration(hintText: "Elenco do Filme - Separe por vírgula"),
-                  controller: _elencoController,
-                  validator: (value) {
-                    if (value!.trim().isEmpty) {
-                      return "Elenco do Filme deve ser Preenchido";
-                    } else {
-                      return null;
-                    }
-                  }),
-              ElevatedButton(onPressed: () => {
-                if(_formkey.currentState!.validate()) {
-                  _cadastrarFilme()
-                }
-              },
-               child: const Text('Cadastrar')),
-            ],
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Padding(
+              padding: EdgeInsets.all(15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Nome do filme',
+                    ),
+                    validator: (value) {
+                      if (value!.trim().isEmpty) {
+                        return 'Por favor, insira o nome do filme';
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: _nomeController,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Categoria do filme',
+                    ),
+                    validator: (value) {
+                      if (value!.trim().isEmpty) {
+                        return 'Por favor, insira a categoria do filme';
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: _categoriaController,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Sinopse',
+                    ),
+                    validator: (value) {
+                      if (value!.trim().isEmpty) {
+                        return 'Por favor, insira a sinopse do filme';
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: _sinopseController,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Duração',
+                    ),
+                    validator: (value) {
+                      if (value!.trim().isEmpty) {
+                        return 'Por favor, insira a duração do filme em minutos';
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: _duracaoController,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Ano',
+                    ),
+                    validator: (value) {
+                      if (value!.trim().isEmpty) {
+                        return 'Por favor, insira o ano de lançamento do filme';
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: _anoController,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Classificação',
+                    ),
+                    validator: (value) {
+                      if (value!.trim().isEmpty) {
+                        return 'Por favor, insira a classificação etária do filme';
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: _classificacaoController,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Elenco - Separe por vírgula',
+                    ),
+                    validator: (value) {
+                      if (value!.trim().isEmpty) {
+                        return 'Por favor, insira o elenco principal do filme';
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: _elencoController,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  _imageSelecionada != null
+                      ? Image.file(
+                          _imageSelecionada!,
+                          height: 150,
+                          width: 150,
+                          fit: BoxFit.cover,
+                        )
+                      : SizedBox.shrink(),
+                  ElevatedButton(
+                      onPressed: _tirarFoto,
+                      child: Text("Selecione a imagem do filme")),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _cadastrarFilme();
+                      }
+                    },
+                    child: Text("Cadastrar"),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
     );
   }
 
-  Future<void> _tirarFoto() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
-    setState(() {
-      _imagemSelecionada = File(pickedFile.path);
-    });
+  Filme getFilmes() {
+    return Filme(
+      nome: _nomeController.text,
+      categoria: _categoriaController.text,
+      sinopse: _sinopseController.text,
+      duracao: int.parse(_duracaoController.text),
+      ano: int.parse(_anoController.text),
+      classificacao: int.parse(_classificacaoController.text),
+      elenco: _elencoController.text,
+      imagens: _imageSelecionada!.path,
+    );
   }
-  
-  void _cadastrarFilme() {}
+
+  void limpar() {
+    _nomeController.clear();
+    _categoriaController.clear();
+    _sinopseController.clear();
+    _duracaoController.clear();
+    _anoController.clear();
+    _classificacaoController.clear();
+    _elencoController.clear();
+    _imageSelecionada = null;
+    setState(() {});
+  }
+
+  void _cadastrarFilme() {
+    // Método para cadastrar filme no jSon!
+
+    bool verificaFilme = false;
+
+    for (int i = 0; i < _controller.listFilmes.length; i++) {
+      if (_nomeController.text == _controller.listFilmes[i].nome) {
+        verificaFilme = true;
+        break;
+      }
+    }
+
+    if (!verificaFilme) {
+      _controller.adicionarFilme(getFilmes());
+      _controller.salvarJson();
+      // SnackBar cadastrado com sucesso!
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Filme cadastrado com sucesso!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      limpar();
+    } else {
+      // SnackBar já cadastrado!
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Filme já cadastrado!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+  }
+
+  Future<void> _tirarFoto() async {
+    // Método para tirar a imagem do filme
+    final picker = new ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      setState(() {
+        _imageSelecionada = File(pickedFile.path);
+      });
+    }
+  }
 }
