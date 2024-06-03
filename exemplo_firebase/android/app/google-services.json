@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100123905162",
+    "project_id": "teste-firebase-vinicius",
+    "storage_bucket": "teste-firebase-vinicius.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100123905162:android:ebc3bcce244674cc5b3173",
+        "android_client_info": {
+          "package_name": "br.com.vinicius.exemplo_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1DqTzxg2tmySXIXVIIAYPZ5YxjXsIc5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
