@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "950318182451",
+    "project_id": "teste-firebase-tarde-diogo",
+    "storage_bucket": "teste-firebase-tarde-diogo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950318182451:android:af7d108d64efbfc11b3346",
+        "android_client_info": {
+          "package_name": "br.com.diogotb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkh-pPeXF6q69fqq1_-Nv5lPjQ6E3ZkbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
