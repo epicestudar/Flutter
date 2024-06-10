@@ -30,7 +30,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
           child: Form(
               key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   //campos do form
                   children: <Widget>[
                     TextFormField(
@@ -65,7 +65,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
   }
 
   Future<User?> _registrar() async {
-    if (_confirmPasswordController == _passwordController) {
+    if (_confirmPasswordController.text == _passwordController.text) {
       if (_formKey.currentState!.validate()) {
         return _authService.registerWithEmail(
             _emailController.text, _confirmPasswordController.text);
