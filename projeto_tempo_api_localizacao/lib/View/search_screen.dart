@@ -13,97 +13,99 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  TextEditingController _cityController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
   final WeatherController _controller = WeatherController();
-  final CityDbController _cityDbController = CityDbController();
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _cityController = TextEditingController();
+  final CityDbController _dbController = CityDbController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Search City"),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Center(
-              child: Form(
-                  key: _formKey,
-                  child: Column(children: [
-                    TextFormField(
-                      controller: _cityController,
-                      decoration: const InputDecoration(
-                        labelText: 'Enter City',
+      appBar: AppBar(title: const Text("Pesquisa Por Cidade")),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            Center(
+                child: Form(
+                    key: _formKey,
+                    child: Column(children: [
+                      TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: "Insira a Cidade"),
+                          controller: _cityController,
+                          validator: (value) {
+                            if (value!.trim().isEmpty) {
+                              return "Insira a Cidade";
+                            }
+                            return null;
+                          }),
+                      const SizedBox(
+                        height: 20,
                       ),
-                      validator: (value) {
-                        if (value!.trim().isEmpty) {
-                          return 'Please enter city';
-                        }
-                        return null;
-                      },
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _findCity(_cityController.text);
-                        }
-                      },
-                      child: const Text('Search'),
-                    ),
-                    const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _findCity(_cityController.text);
+                          }
+                        },
+                        child: const Text("Search"),
+                      ),
+                      const SizedBox(height: 20,),
+                      
+                    ]))),
                     Expanded(
-                        child: FutureBuilder(
-                            future: _cityDbController.getAllCities(),
-                            builder: (context, snapshot) {
-                              if (_cityDbController.getCities().isEmpty) {
-                                return const Center(
-                                    child: CircularProgressIndicator());
-                              } else {
-                                return ListView.builder(
-                                    itemCount:
-                                        _cityDbController.getCities().length,
-                                    itemBuilder: (context, index) {
-                                      final reversedIndex = _cityDbController.getCities().length-index-1;
-                                      return ListTile(
-                                        title: Text(_cityDbController
-                                            .getCities()[reversedIndex]
-                                            .cityName),
-                                        onTap: () {
-                                          _findCity(_cityDbController
-                                              .getCities()[reversedIndex]
-                                              .cityName);
-                                        },
-                                      );
+                        child:FutureBuilder(
+                          future: _dbController.listCities(), 
+                          builder: (context,snapshot){
+                            if(_dbController.cities().isNotEmpty){
+                              return ListView.builder(
+                                itemCount: _dbController.cities().length,
+                                itemBuilder: (context, index){
+                                  final city = _dbController.cities()[index];
+                                  return ListTile(
+                                    title: Text(city.cityName),
+                                    onTap: () {
+                                       _findCity(city.cityName);
                                     });
-                              }
-                            }))
-                  ]))),
-        ));
+                                });
+                            }else{
+                              return const Text("Empty List");
+                            }
+                          }))
+          ],
+        ),
+      ),
+    );
   }
 
   Future<void> _findCity(String city) async {
     if (await _controller.findCity(city)) {
-      CityDB db = CityDB(cityName: city, favoritesCities: 0);
-      _cityDbController.create(db);//obj da classe CityDb
-      //Mensagem snackbar
-      ScaffoldMessenger.of(context)
-         .showSnackBar(const SnackBar(
-          content: Text('City found'),
-          duration:Duration(seconds: 1)));
-      //Chamando a tela CityDetailsScreen
+      //snackbar
+      City cidade = City(cityName: city, favoriteCities: 0);
+      _dbController.addCities(cidade);
+      print("ok");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Found City!"),
+          duration: Duration(seconds: 1),
+        ),
+      );
+      setState(() {
+        
+      });
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => CityDetailsScreen(city: city)));
-    }else{
-      _cityController.clear();
-      //Mensagem snackbar
-      ScaffoldMessenger.of(context)
-         .showSnackBar(const SnackBar(
-          content: Text('City not found'),
-          duration:Duration(seconds: 2)));
-          setState(() {
-          });
+              builder: (BuildContext context) =>
+                  DetailsWeatherScreen(city: city)));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("City not Found!"),
+          duration: Duration(seconds: 2),
+        ),
+      );
     }
   }
 }

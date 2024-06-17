@@ -1,26 +1,26 @@
 class Produto {
-  //atrbutos
+  //atributos
   final String id;
   final String nome;
-  final String preco;
+  final String codigo;
+  final double preco;
 
-  Produto({required this.id, required this.nome, required this.preco});
+  Produto({required this.id, required this.nome, required this.codigo, required this.preco});
+  
+  //tojson
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'nome': nome,
+    'codigo': codigo,
+    'preco': preco
+  };
+  //fromJson
+  factory Produto.fromJson(Map<String, dynamic> json) => Produto(
+    id: (json['id']).toString(),
+    nome: json['nome'],
+    codigo: json['codigo'],
+    preco: json['preco'] is double ? json['preco'] : double.parse(json['preco'].toString())
+  );
 
-  //TO JSON
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'nome': nome,
-      'preco': preco,
-    };
-  }
-  //FROM JSON
-  factory Produto.fromJson(Map<String, dynamic> json) {
-    return Produto(
-      id: json['id'] is int ? json['id'] :int.parse(json['id']),
-      nome: (json['nome']).toString(),
-      preco: json['preco'] is double ? json['preco'] : double.parse(json['preco']),
-    );
-  }
 
 }

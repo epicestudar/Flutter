@@ -6,29 +6,27 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //dois botões (listar e cadastrar)
+      //página com dois botoes(listar e cadastrar) produto
       appBar: AppBar(
-        title: const Text('Home'),
+        title: Text('Produtos'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/listar');
-              },
-              child: const Text('Listar'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/cadastrar');
-              },
-              child: const Text('Cadastrar'),
-            ),
-          ],
-        ),
+          children: [
+          ElevatedButton(
+            onPressed: () => Navigator.pushNamed(context,'/listar'), 
+            child: const Text('Listar')),
+          const SizedBox(height: 12,),
+          ElevatedButton(
+            onPressed: () => Navigator.pushNamed(context,'/cadastrar'), 
+            child: const Text('Cadastrar')),
+          const SizedBox(height: 12,),
+
+        ],),
       ),
+
+
     );
   }
 }

@@ -1,63 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_tempo_api_localizacao/Service/city_db_service.dart';
 
 import '../Controller/weather_controller.dart';
 
-class CityDetailsScreen extends StatefulWidget {
+class DetailsWeatherScreen extends StatefulWidget {
   final String city;
-  const CityDetailsScreen({super.key, required this.city});
+  const DetailsWeatherScreen({super.key, required this.city});
+  
 
   @override
-  State<CityDetailsScreen> createState() => _CityDetailsScreenState();
+  State<DetailsWeatherScreen> createState() => _DetailsWeatherScreenState();
 }
 
-class _CityDetailsScreenState extends State<CityDetailsScreen> {
+class _DetailsWeatherScreenState extends State<DetailsWeatherScreen> {
   final WeatherController _controller = WeatherController();
-  bool isFavorited = false;
+  final CityDataBaseService _dbService = CityDataBaseService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.city),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(12),
-        child:Center(
-          child: FutureBuilder(
-            future: _controller.getFromWeatherService(widget.city), 
-            builder: (context,snapshot){
-              if(_controller.listWeather.isEmpty){
-                return CircularProgressIndicator();
-              }else{
-                return Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(_controller.listWeather.last.city),
-                        //favorite icon
-                        IconButton(
-                          icon: isFavorited ? Icon(Icons.favorite):Icon(Icons.favorite_border_outlined),
-                          onPressed: (){
-                            setState(() {
-                              isFavorited = !isFavorited;
-                            });
-                            //criar a função para favoritar
-                          },
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 12,),
-                    Text(_controller.listWeather.last.description),
-                    const SizedBox(height: 12,),
-                    Text((_controller.listWeather.last.temp-273).toStringAsFixed(2)),
-                    const SizedBox(height: 12,),
-                  ],
-                );
-              }
-            }),
-        )),
-      
-    );
+        appBar: AppBar(
+          title: const Text('Detalhes'),
+        ),
+        body: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Center(
+                child: FutureBuilder(
+                    future: _controller.getWeather(widget.city),
+                    builder: (context, snapshot) {
+                      if (_controller.weatherList.isEmpty) {
+                        return const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(),
+                          ],
+                        );
+                      } else {
+                        return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(_controller.weatherList.last.name),
+                                  //icon favorite
+                                  IconButton(
+                                    icon: const Icon(Icons.favorite),
+                                    onPressed: () {
+                                      //criar método para favoritar
+                                    },
+                                  )
+                                ],
+                              ),
+                              Text(_controller.weatherList.last.main),
+                              Text(_controller.weatherList.last.description),
+                              Text((_controller.weatherList.last.temp - 273)
+                                  .toStringAsFixed(2))
+                            ]);
+                      }
+                    }))));
   }
 }

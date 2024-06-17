@@ -1,35 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_apirest/controllers/produtos_controller.dart';
-import 'package:projeto_apirest/models/produtos.dart';
 
 
-class ListaProdutosScreen extends StatefulWidget {
-  const ListaProdutosScreen({super.key});
+
+class ListarProdutosScreen extends StatefulWidget {
+  const ListarProdutosScreen({super.key});
 
   @override
-  State<ListaProdutosScreen> createState() => _ListaProdutosScreenState();
+  State<ListarProdutosScreen> createState() => _ListarProdutosScreenState();
 }
 
-class _ListaProdutosScreenState extends State<ListaProdutosScreen> {
+class _ListarProdutosScreenState extends State<ListarProdutosScreen> {
   final ProdutosController _controller = ProdutosController();
 
-  //future lista de produtos
-  Future<List<Produto>> futureProdutos() async{
+  //criar método getPRodutos
+  Future<void> _getProdutos() async {
     try {
-      return _controller.getProdutosFromJson();
+      await _controller.getProdutosFromJson();
     } catch (e) {
-      print(e);
-      return [];
+      print(e);    
     }
-    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //lista de produtos do json com future.builder
-      body: FutureBuilder<List<Produto>>(
-        future: futureProdutos(),
+      // future.builder lista produtos
+      body: FutureBuilder(
+        future: _getProdutos(),
         builder: (context, snapshot) {
           if (_controller.listProdutos.isNotEmpty) {
             return ListView.builder(
@@ -37,18 +35,21 @@ class _ListaProdutosScreenState extends State<ListaProdutosScreen> {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(_controller.listProdutos[index].nome),
-                  subtitle: Text((_controller.listProdutos[index].preco).toStringAsFixed(2)),
+                  subtitle: Text(_controller.listProdutos[index].codigo),
                 );
               },
             );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          } else {
-            return Center(child: CircularProgressIndicator());
+          } else if(snapshot.hasError){
+            return Center(
+              child: Text(snapshot.error.toString()),
+            );
+          }else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
         },
       ),
-
     );
   }
 }

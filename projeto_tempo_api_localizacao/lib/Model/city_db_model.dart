@@ -1,26 +1,23 @@
-class CityDB {
-  int? id;
+class City {
+  //atributos
   final String cityName;
-  final int favoritesCities;
-
-  CityDB(
-      {this.id,
-      required this.cityName,
-      required this.favoritesCities});
+  final int favoriteCities;
+  //cosntrutor
+  City({required this.cityName, required this.favoriteCities});
+  //metodos
   
   //toMap
   Map<String,dynamic> toMap() {
     return {
-      'cityname': this.cityName,
-      'favoritescities': this.favoritesCities
-    };
+    'cityname': cityName,
+    'favoritecities': favoriteCities};
   }
+
   //fromMap
-  factory CityDB.fromMap(Map<String,dynamic> map){
-    return CityDB(
-      id: map['id'],
+  factory City.fromMap(Map<String,dynamic> map ) {
+    return City(
       cityName: map['cityname'],
-      favoritesCities: map['favoritescities']
+      favoriteCities:map['favoritecities'],
     );
   }
 }
