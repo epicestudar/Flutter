@@ -7,8 +7,10 @@ environment:
   sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
+  audioplayers: ^6.0.0
   flutter:
     sdk: flutter
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
